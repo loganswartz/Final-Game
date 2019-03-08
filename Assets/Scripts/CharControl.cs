@@ -13,17 +13,22 @@ public class CharControl : MonoBehaviour {
     public Rigidbody[] bodies;
 
     public Transform[] children;
-    public List<Transform> resetPositions;
+    public List<Vector3> resetPositions;
+    public List<Quaternion> resetRotations;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		cc = GetComponent<CharacterController> ();
 		anim = GetComponent<Animator>();
-        resetPositions = new List<Transform>();
+        resetPositions = new List<Vector3>();
         bodies = GetComponentsInChildren<Rigidbody>();
         foreach (Transform child in GetComponentsInChildren<Transform>())
         {
-            resetPositions.Add(child.transform);
+            resetPositions.Add(child.transform.position);
+        }
+        foreach (Transform child in GetComponentsInChildren<Transform>())
+        {
+            resetRotations.Add(child.transform.rotation);
         }
     }
 
@@ -98,16 +103,8 @@ public class CharControl : MonoBehaviour {
             children = GetComponentsInChildren<Transform>();
             for (int i =0;i<resetPositions.Count;i++)
             {
-                children[i].transform.localPosition = resetPositions[i].localPosition;
-                children[i].transform.localRotation = resetPositions[i].localRotation;
-                children[i].transform.localScale = resetPositions[i].localScale;
-                children[i].transform.position = resetPositions[i].position;
-                children[i].transform.rotation = resetPositions[i].rotation;
-                if (children[i].gameObject.name == "MidTorso")
-                {
-                    Debug.Log(resetPositions[i].position);
-                    Debug.Log(children[i].position);
-                }
+                children[i].transform.position = resetPositions[i];
+                children[i].transform.rotation = resetRotations[i];
 
             }
             this.gameObject.GetComponent<CharacterController>().enabled = true;
@@ -120,7 +117,6 @@ public class CharControl : MonoBehaviour {
 
         if (collider.gameObject.tag == "RagdollCollider")
         {
-            Debug.Break();
             toggleRagdoll();
         }
     }
