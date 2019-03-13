@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Runner
+  m_Mask: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/LUpperLeg
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/LUpperLeg/LLeg
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/LUpperLeg/LLeg/LFoot
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/LUpperLeg_001
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/LUpperLeg_001/LLeg_001
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/LUpperLeg_001/LLeg_001/LFoot_001
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/MidTorso
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso/LShoulder
+    m_Weight: 1
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso/LShoulder/LUpperArm
+    m_Weight: 1
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso/LShoulder/LUpperArm/LArm
+    m_Weight: 1
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso/LShoulder/LUpperArm/LArm/LHand
+    m_Weight: 1
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso/LShoulder/LUpperArm/LArm/LHand/LFingers
+    m_Weight: 1
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso/LShoulder/LUpperArm/LArm/LHand/LThumb
+    m_Weight: 1
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso/LShoulder_001
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso/LShoulder_001/LUpperArm_001
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso/LShoulder_001/LUpperArm_001/LArm_001
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso/LShoulder_001/LUpperArm_001/LArm_001/LHand_001
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso/LShoulder_001/LUpperArm_001/LArm_001/LHand_001/LFingers_001
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso/LShoulder_001/LUpperArm_001/LArm_001/LHand_001/LThumb_001
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso/Neck
+    m_Weight: 0
+  - m_Path: Armature/LowerTorso/MidTorso/UpperTorso/Neck/Head
+    m_Weight: 0
+  - m_Path: Cube
+    m_Weight: 0
