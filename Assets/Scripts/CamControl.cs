@@ -24,5 +24,6 @@ public class CamControl : MonoBehaviour {
 		rotx += Input.GetAxis ("Mouse Y") * 40 * Time.deltaTime;
 		rotx = Mathf.Clamp (rotx, -45, 45);
 		transform.rotation = Quaternion.Euler (rotx, roty, 0.0f);
+
 	}
 }

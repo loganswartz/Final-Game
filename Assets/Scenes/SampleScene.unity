@@ -220,7 +220,7 @@ Transform:
   m_Children:
   - {fileID: 1448985738}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &269352191
 Prefab:
@@ -259,7 +259,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4910513541522078, guid: fb92b72b880f44df79bd7533198e0d61, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
         type: 2}
@@ -279,6 +279,27 @@ Prefab:
     - {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: fb92b72b880f44df79bd7533198e0d61, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &395807562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1028373013844046, guid: fb92b72b880f44df79bd7533198e0d61,
+    type: 2}
+  m_PrefabInternal: {fileID: 1703580137}
+--- !u!114 &395807567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 395807562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d49608dafc018c48babbcfeda711c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ragdoll: 0
+  bodies: []
+  children: []
+  resetPositions: []
+  resetRotations: []
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,7 +560,7 @@ Transform:
   m_GameObject: {fileID: 1132029298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.697, y: -0, z: 6.282}
-  m_LocalScale: {x: 1.139, y: 1, z: 2.256}
+  m_LocalScale: {x: 3.7262387, y: 3.2715, z: 7.3805046}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -721,6 +742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d60237faaaebcb4abbbd934ccdb0a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: []
 --- !u!1001 &1703580137
 Prefab:
   m_ObjectHideFlags: 0
@@ -738,7 +760,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4910513541522078, guid: fb92b72b880f44df79bd7533198e0d61, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 11.37
+      value: 23.65
       objectReference: {fileID: 0}
     - target: {fileID: 4910513541522078, guid: fb92b72b880f44df79bd7533198e0d61, type: 2}
       propertyPath: m_LocalRotation.x
@@ -856,6 +878,17 @@ Prefab:
       propertyPath: m_ConnectedAnchor.z
       value: -0.01793525
       objectReference: {fileID: 0}
+    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1448985737}
+    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: drinkPowerup
+      value: 
+      objectReference: {fileID: 1205964263174232, guid: 49b0d741179a6544c86fdd17cc41f915,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb92b72b880f44df79bd7533198e0d61, type: 2}
   m_IsPrefabAsset: 0
