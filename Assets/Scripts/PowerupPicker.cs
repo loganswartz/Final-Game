@@ -6,7 +6,7 @@ public class PowerupPicker : MonoBehaviour {
 
     private bool activated = false;
     private Vector3 startingScale;
-    private string[] powerUps = { "drink", "pigeon", "cone", "cardboard", "egg" };
+    private string[] powerUps = { "drink" };//, "pigeon", "cone", "cardboard", "egg" };
 	// Use this for initialization
 	void Start () {
         startingScale = transform.localScale;
