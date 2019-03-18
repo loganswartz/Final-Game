@@ -28,7 +28,7 @@ public class CharControlNew : MonoBehaviour {
     private GameObject prop;
     public GameObject drinkPowerup;
     public GameObject eggPowerup;
-
+    public GameObject pigeonPowerup;
 
     public Transform[] children;
     public List<Vector3> resetPositions;
@@ -178,7 +178,6 @@ public class CharControlNew : MonoBehaviour {
                 prop.GetComponent<PowerupDrink>().target = hand.transform;
                 runnerInFront = gameManager.GetComponent<GameManager>().getInFront(this.gameObject);
                 StartCoroutine(spawnPowerup(drinkPowerup));
-                powerup = "";
             } else if (powerup == "egg")
             {
                 anim.SetBool("drop", true);
@@ -189,12 +188,24 @@ public class CharControlNew : MonoBehaviour {
                 prop.GetComponent<PowerupEgg>().prop = true;
                 prop.GetComponent<PowerupEgg>().target = hand.transform;
                 StartCoroutine(spawnPowerup(eggPowerup));
-                powerup = "";
             }
+            else if (powerup == "pigeon")
+            {
+                anim.SetBool("throw", true);
+                StartCoroutine(disableThrow("throw"));
+
+                prop = Instantiate(pigeonPowerup, hand.transform.position, transform.rotation);
+                prop.GetComponent<BoxCollider>().enabled = false;
+                prop.GetComponent<PowerupPigeon>().prop = true;
+                prop.GetComponent<PowerupPigeon>().target = hand;
+                runnerInFront = gameManager.GetComponent<GameManager>().getInFront(this.gameObject);
+                StartCoroutine(spawnPowerup(pigeonPowerup));
+            }
+            powerup = "";
         }
 
         Quaternion LookRotationLimit = Quaternion.Euler (transform.rotation.eulerAngles.x, LookAt.eulerAngles.y, transform.rotation.eulerAngles.z);
-		transform.rotation = Quaternion.Slerp (transform.rotation, LookRotationLimit, 0.05f);
+		transform.rotation = Quaternion.Slerp (transform.rotation, LookRotationLimit, 0.025f);
 		
 	}
 
@@ -272,6 +283,13 @@ public class CharControlNew : MonoBehaviour {
         {
             GameObject pu = Instantiate(powerup, hand.transform.position, transform.rotation);
             Destroy(prop);
+        }
+        else if (powerup.name == "Pigeon")
+        {
+            Debug.Log("it is pigeon");
+            GameObject pu = Instantiate(powerup, transform.position + (transform.up * 1.75f) + transform.forward, transform.rotation);
+            Destroy(prop);
+            pu.GetComponent<PowerupPigeon>().target = runnerInFront;
         }
     }
 
