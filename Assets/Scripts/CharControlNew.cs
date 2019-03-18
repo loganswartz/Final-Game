@@ -22,9 +22,12 @@ public class CharControlNew : MonoBehaviour {
     public GameObject hand;
     public GameObject gameManager;
     public string powerup = "";
-    public GameObject drinkPowerup;
     public GameObject runnerInFront;
+
     private GameObject prop;
+    public GameObject drinkPowerup;
+    public GameObject eggPowerup;
+
 
     public Transform[] children;
     public List<Vector3> resetPositions;
@@ -162,17 +165,29 @@ public class CharControlNew : MonoBehaviour {
         // If a powerup is held, throw it when pressing space
         if (powerup != "" && Input.GetKey("space"))
         {
-            anim.SetBool("throw", true);
-            StartCoroutine(disableThrow());
 
             if (powerup == "drink")
             {
+                anim.SetBool("throw", true);
+                StartCoroutine(disableThrow("throw"));
+
                 prop = Instantiate(drinkPowerup, hand.transform.position, transform.rotation);
                 prop.GetComponent<CapsuleCollider>().enabled = false;
                 prop.GetComponent<PowerupDrink>().prop = true;
                 prop.GetComponent<PowerupDrink>().target = hand.transform;
                 runnerInFront = gameManager.GetComponent<GameManager>().getInFront(this.gameObject);
                 StartCoroutine(spawnPowerup(drinkPowerup));
+                powerup = "";
+            } else if (powerup == "egg")
+            {
+                anim.SetBool("drop", true);
+                StartCoroutine(disableThrow("drop"));
+
+                prop = Instantiate(eggPowerup, hand.transform.position, transform.rotation);
+                prop.GetComponent<SphereCollider>().enabled = false;
+                prop.GetComponent<PowerupEgg>().prop = true;
+                prop.GetComponent<PowerupEgg>().target = hand.transform;
+                StartCoroutine(spawnPowerup(eggPowerup));
                 powerup = "";
             }
         }
@@ -247,9 +262,9 @@ public class CharControlNew : MonoBehaviour {
         pu.GetComponent<PowerupDrink>().target = runnerInFront.transform;
     }
 
-    public IEnumerator disableThrow()
+    public IEnumerator disableThrow(string animBool)
     {
-        yield return new WaitForSeconds(1);
-        anim.SetBool("throw", false);
+        yield return new WaitForSeconds(0.5f);
+        anim.SetBool(animBool, false);
     }
 }
