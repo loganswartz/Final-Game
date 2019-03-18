@@ -14,6 +14,7 @@ public class CharControlNew : MonoBehaviour {
 
     public bool ragdoll = false;
     public Rigidbody[] bodies;
+    private bool canRagdoll = true;
 
     private Rigidbody rb;
     private float speed = 0.5f;
@@ -230,14 +231,17 @@ public class CharControlNew : MonoBehaviour {
             }
             this.gameObject.GetComponent<CharacterController>().enabled = true;
             this.gameObject.GetComponent<Animator>().enabled = true;
+            canRagdoll = true;
         }
     }
 
     void OnTriggerEnter(Collider collider)
     {
 
-        if (collider.gameObject.tag == "RagdollCollider")
+        if (collider.gameObject.tag == "RagdollCollider" && canRagdoll)
         {
+            canRagdoll = false;
+            this.gameObject.GetComponent<BoxCollider>().enabled = false;
             toggleRagdoll();
         }
     }
@@ -246,20 +250,29 @@ public class CharControlNew : MonoBehaviour {
     {
         yield return new WaitForSeconds(.5f);
         this.gameObject.GetComponent<CharacterController>().enabled = false;
+    
     }
 
     public IEnumerator ragdollDisable()
     {
         yield return new WaitForSeconds(5);
+        this.gameObject.GetComponent<BoxCollider>().enabled = true;
         toggleRagdoll();
     }
 
     public IEnumerator spawnPowerup(GameObject powerup)
     {
         yield return new WaitForSeconds(0.5f);
-        GameObject pu = Instantiate(powerup, transform.position + (transform.up * 1.75f) + transform.forward, transform.rotation);
-        Destroy(prop);
-        pu.GetComponent<PowerupDrink>().target = runnerInFront.transform;
+        if (powerup.name == "Drink")
+        {
+            GameObject pu = Instantiate(powerup, transform.position + (transform.up * 1.75f) + transform.forward, transform.rotation);
+            Destroy(prop);
+            pu.GetComponent<PowerupDrink>().target = runnerInFront.transform;
+        } else if (powerup.name == "Egg")
+        {
+            GameObject pu = Instantiate(powerup, hand.transform.position, transform.rotation);
+            Destroy(prop);
+        }
     }
 
     public IEnumerator disableThrow(string animBool)

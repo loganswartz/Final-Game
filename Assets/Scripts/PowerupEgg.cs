@@ -7,6 +7,7 @@ public class PowerupEgg : MonoBehaviour
 
     public Transform target;
     public bool prop = false;
+    public GameObject eggBroke;
 
     // Use this for initialization
     void Start()
@@ -23,6 +24,15 @@ public class PowerupEgg : MonoBehaviour
         else
         {
             transform.position = target.position;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            Instantiate(eggBroke, transform.position, Quaternion.Euler(-90, 0, 0));
+            Destroy(this.gameObject);
         }
     }
 }
