@@ -33,7 +33,7 @@ public class PowerupPigeon : MonoBehaviour {
                 }
                 else
                 {
-                    transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 11 * Time.deltaTime);
+                    transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 12 * Time.deltaTime);
                     transform.rotation = Quaternion.LookRotation(transform.position - target.transform.position);
                 }
 

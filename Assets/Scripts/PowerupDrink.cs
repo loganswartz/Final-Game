@@ -50,6 +50,7 @@ public class PowerupDrink : MonoBehaviour {
         } else
         {
             transform.position = target.position;
+            transform.rotation = target.rotation;
         }
     }
 

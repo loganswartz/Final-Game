@@ -10,7 +10,8 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
-  - component: {fileID: 11100000}
+  - component: {fileID: 65711123624351030}
+  - component: {fileID: 114495966296037416}
   m_Layer: 0
   m_Name: cardboardBox_03
   m_TagString: Untagged
@@ -25,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -6.123234e-17, y: 1, z: 6.123234e-17, w: -3.7493994e-33}
-  m_LocalPosition: {x: 1.4511, y: 0.20352, z: 4.1323}
-  m_LocalScale: {x: 0.39991, y: 0.39991, z: 0.39991}
+  m_LocalPosition: {x: 1.4507, y: 0.37917, z: 4.1327}
+  m_LocalScale: {x: 0.6298665, y: 0.6298665, z: 0.6298665}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,20 +74,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mesh: {fileID: 4300002, guid: 8bf2bd9ec7d102c48a617d4ba4efbc73, type: 3}
---- !u!111 &11100000
-Animation:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -98,3 +85,27 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabAsset: 1
+--- !u!65 &65711123624351030
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3178002, y: 0.6687689, z: 0.87780005}
+  m_Center: {x: -0.0013748407, y: 0.3272481, z: 0.0013750196}
+--- !u!114 &114495966296037416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07157aea84339457ba15491371acad0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerupImg: {fileID: 0}

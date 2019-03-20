@@ -26,6 +26,7 @@ public class CharControlNew : MonoBehaviour {
     public GameObject runnerInFront;
 
     private GameObject prop;
+    public GameObject powerupImage;
     public GameObject drinkPowerup;
     public GameObject eggPowerup;
     public GameObject pigeonPowerup;
@@ -166,7 +167,7 @@ public class CharControlNew : MonoBehaviour {
         // If a powerup is held, throw it when pressing space
         if (powerup != "" && Input.GetKey("space"))
         {
-
+            powerupImage.GetComponent<changePowerImg>().switchImg(0);
             if (powerup == "drink")
             {
                 anim.SetBool("throw", true);

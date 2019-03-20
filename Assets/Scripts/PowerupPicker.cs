@@ -7,6 +7,9 @@ public class PowerupPicker : MonoBehaviour {
     private bool activated = false;
     private Vector3 startingScale;
     private string[] powerUps = { "drink", "egg", "pigeon" };//, "cone", "cardboard", };
+
+    public GameObject powerupImg;
+
 	// Use this for initialization
 	void Start () {
         startingScale = transform.localScale;
@@ -35,7 +38,9 @@ public class PowerupPicker : MonoBehaviour {
             activated = true;
             if (other.gameObject.GetComponent<CharControlNew>().powerup == "")
             {
-                other.gameObject.GetComponent<CharControlNew>().powerup = powerUps[Random.Range(0, powerUps.Length)];
+                int powerup = Random.Range(0, powerUps.Length);
+                other.gameObject.GetComponent<CharControlNew>().powerup = powerUps[powerup];
+                powerupImg.GetComponent<changePowerImg>().switchImg(powerup + 1);
             }
         }
     }
