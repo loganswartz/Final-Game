@@ -30,12 +30,18 @@ ModelImporter:
     400022: //RootNode
     400024: Plane
     2100000: unnamed
+    2100002: None__pigeon_uv_png
     4300000: Plane
     7400000: Default Take
     7400002: Flap
     9500000: //RootNode
     13700000: Plane
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: None__pigeon_uv_png
+    second: {fileID: 2100000, guid: 4058ea47db7a54b8ba46d48fee7bc23f, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

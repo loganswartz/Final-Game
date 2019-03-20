@@ -177,7 +177,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &241272152
 GameObject:
@@ -440,7 +440,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4681543527991836, guid: a425f35d7aeb5447ca1497915d33c3dd, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4681543527991836, guid: a425f35d7aeb5447ca1497915d33c3dd, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -758,7 +758,7 @@ Transform:
   m_LocalScale: {x: 3.7262387, y: 3.2715, z: 19.460176}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1141773705
 Prefab:
@@ -1165,7 +1165,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4910513541522078, guid: fb92b72b880f44df79bd7533198e0d61, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
         type: 2}
@@ -1242,7 +1242,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4910513541522078, guid: fb92b72b880f44df79bd7533198e0d61, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
         type: 2}
@@ -1288,7 +1288,7 @@ Prefab:
     - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
         type: 2}
       propertyPath: powerup
-      value: 
+      value: cardboard
       objectReference: {fileID: 0}
     - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
         type: 2}
