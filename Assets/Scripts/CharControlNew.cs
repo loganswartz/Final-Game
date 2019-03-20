@@ -30,6 +30,7 @@ public class CharControlNew : MonoBehaviour {
     public GameObject drinkPowerup;
     public GameObject eggPowerup;
     public GameObject pigeonPowerup;
+    public GameObject cardboardPowerup;
 
     public Transform[] children;
     public List<Vector3> resetPositions;
@@ -202,6 +203,17 @@ public class CharControlNew : MonoBehaviour {
                 runnerInFront = gameManager.GetComponent<GameManager>().getInFront(this.gameObject);
                 StartCoroutine(spawnPowerup(pigeonPowerup));
             }
+            else if (powerup == "cardboard")
+            {
+                anim.SetBool("throw", true);
+                StartCoroutine(disableThrow("throw"));
+
+                prop = Instantiate(cardboardPowerup, hand.transform.position, transform.rotation);
+                prop.GetComponent<BoxCollider>().enabled = false;
+                prop.GetComponent<powerupCardboard>().prop = true;
+                prop.GetComponent<powerupCardboard>().target = hand;
+                StartCoroutine(spawnPowerup(cardboardPowerup));
+            }
             powerup = "";
         }
 
@@ -287,10 +299,14 @@ public class CharControlNew : MonoBehaviour {
         }
         else if (powerup.name == "Pigeon")
         {
-            Debug.Log("it is pigeon");
             GameObject pu = Instantiate(powerup, transform.position + (transform.up * 1.75f) + transform.forward, transform.rotation);
             Destroy(prop);
             pu.GetComponent<PowerupPigeon>().target = runnerInFront;
+        }
+        else if (powerup.name == "Cardboard")
+        {
+            GameObject pu = Instantiate(powerup, transform.position + (transform.up * 1.75f) + transform.forward, transform.rotation);
+            Destroy(prop);
         }
     }
 

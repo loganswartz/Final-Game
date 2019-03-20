@@ -6,7 +6,7 @@ public class PowerupPicker : MonoBehaviour {
 
     private bool activated = false;
     private Vector3 startingScale;
-    private string[] powerUps = { "drink", "egg", "pigeon" };//, "cone", "cardboard", };
+    private string[] powerUps = { "drink", "egg", "pigeon", "cardboard" };//, "cone", };
 
     public GameObject powerupImg;
 
