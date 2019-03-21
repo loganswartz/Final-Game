@@ -56,6 +56,15 @@ ModelImporter:
     400048: //RootNode
     400050: UpperTorso
     2100000: unnamed
+    2100002: Body
+    2100004: Head
+    2100006: Body__body_uv_png
+    2100008: Head__body_uv_png
+    2100010: Leotard
+    2100012: Default
+    2100014: Default__body_uv_png
+    2100016: Pants
+    2100018: Pants__body_uv_png
     4300000: Cube
     7400000: Run
     7400002: Throw
@@ -63,7 +72,37 @@ ModelImporter:
     7400006: Drop
     9500000: //RootNode
     13700000: Cube
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: e954d4e59e3bf4989bf7e5308166f4f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body__body_uv_png
+    second: {fileID: 2100000, guid: e954d4e59e3bf4989bf7e5308166f4f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Head__body_uv_png
+    second: {fileID: 2100000, guid: e954d4e59e3bf4989bf7e5308166f4f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Leotard
+    second: {fileID: 2100000, guid: 74d7597a8aa5e624baed17483eba4f34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pants
+    second: {fileID: 2100000, guid: dc96a48cfd9f49748ba7a4b4615a30b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pants__body_uv_png
+    second: {fileID: 2100000, guid: dc96a48cfd9f49748ba7a4b4615a30b1, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

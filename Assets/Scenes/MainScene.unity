@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.496413, b: 0.5748175, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -279,6 +279,21 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: c85a676bcfe17eb48b9d52e2396e67e0, type: 2}
+    - target: {fileID: 144953809990247268, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.71079236
+      objectReference: {fileID: 0}
+    - target: {fileID: 144953809990247268, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.0054177367
+      objectReference: {fileID: 0}
+    - target: {fileID: 144953809990247268, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: m_ConnectedAnchor.z
+      value: -0.017936677
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 143699379871049854, guid: fb92b72b880f44df79bd7533198e0d61, type: 2}
     - {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61, type: 2}
@@ -412,15 +427,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4681543527991836, guid: a425f35d7aeb5447ca1497915d33c3dd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 14.335012
+      value: 2.81
       objectReference: {fileID: 0}
     - target: {fileID: 4681543527991836, guid: a425f35d7aeb5447ca1497915d33c3dd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.164775
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4681543527991836, guid: a425f35d7aeb5447ca1497915d33c3dd, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 10.70728
+      value: -6.76
       objectReference: {fileID: 0}
     - target: {fileID: 4681543527991836, guid: a425f35d7aeb5447ca1497915d33c3dd, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1249,25 +1264,6 @@ Prefab:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1448985740}
-    - target: {fileID: 1028373013844046, guid: fb92b72b880f44df79bd7533198e0d61, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 144953809990247268, guid: fb92b72b880f44df79bd7533198e0d61,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.7107923
-      objectReference: {fileID: 0}
-    - target: {fileID: 144953809990247268, guid: fb92b72b880f44df79bd7533198e0d61,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.y
-      value: -0.0054177227
-      objectReference: {fileID: 0}
-    - target: {fileID: 144953809990247268, guid: fb92b72b880f44df79bd7533198e0d61,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.z
-      value: -0.01793525
-      objectReference: {fileID: 0}
     - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
         type: 2}
       propertyPath: gameManager
@@ -1275,38 +1271,9 @@ Prefab:
       objectReference: {fileID: 1448985737}
     - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
         type: 2}
-      propertyPath: drinkPowerup
-      value: 
-      objectReference: {fileID: 1205964263174232, guid: 49b0d741179a6544c86fdd17cc41f915,
-        type: 2}
-    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
-        type: 2}
-      propertyPath: eggPowerup
-      value: 
-      objectReference: {fileID: 1351521390499260, guid: 17a35bf8f75bc654090c51b90feaf151,
-        type: 2}
-    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
-        type: 2}
-      propertyPath: powerup
-      value: cardboard
-      objectReference: {fileID: 0}
-    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
-        type: 2}
-      propertyPath: pigeonPowerup
-      value: 
-      objectReference: {fileID: 1046514315467080, guid: 803671d98ba78c44ab96fe30006e66c3,
-        type: 2}
-    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
-        type: 2}
       propertyPath: powerupImage
       value: 
       objectReference: {fileID: 1097611036}
-    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
-        type: 2}
-      propertyPath: cardboardPowerup
-      value: 
-      objectReference: {fileID: 1225299912760884, guid: a425f35d7aeb5447ca1497915d33c3dd,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb92b72b880f44df79bd7533198e0d61, type: 2}
   m_IsPrefabAsset: 0

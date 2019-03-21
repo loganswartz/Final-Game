@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114916881593070608}
   m_Layer: 0
   m_Name: playermodel
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1046,6 +1046,18 @@ MonoBehaviour:
   cc: {fileID: 0}
   ragdoll: 0
   bodies: []
+  hand: {fileID: 0}
+  gameManager: {fileID: 0}
+  powerup: 
+  runnerInFront: {fileID: 0}
+  powerupImage: {fileID: 0}
+  drinkPowerup: {fileID: 1205964263174232, guid: 49b0d741179a6544c86fdd17cc41f915,
+    type: 2}
+  eggPowerup: {fileID: 1351521390499260, guid: 17a35bf8f75bc654090c51b90feaf151, type: 2}
+  pigeonPowerup: {fileID: 1046514315467080, guid: 803671d98ba78c44ab96fe30006e66c3,
+    type: 2}
+  cardboardPowerup: {fileID: 1225299912760884, guid: a425f35d7aeb5447ca1497915d33c3dd,
+    type: 2}
   children: []
   resetPositions: []
   resetRotations: []
@@ -1206,7 +1218,11 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: d3310d77493ad4b2bbdaecd6e30195a6, type: 3}
+  - {fileID: 2100000, guid: 74d7597a8aa5e624baed17483eba4f34, type: 2}
+  - {fileID: 2100000, guid: 062cf8574b97ea54d8d9f5c90a55361c, type: 2}
+  - {fileID: 2100000, guid: 062cf8574b97ea54d8d9f5c90a55361c, type: 2}
+  - {fileID: 2100000, guid: dc96a48cfd9f49748ba7a4b4615a30b1, type: 2}
+  - {fileID: 2100000, guid: dc96a48cfd9f49748ba7a4b4615a30b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

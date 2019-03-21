@@ -33,7 +33,7 @@ public class powerupCardboard : MonoBehaviour {
         {
             if (move)
             {
-                transform.position = transform.position + Vector3.forward + Vector3.up * Time.deltaTime * 10;
+                transform.position = transform.position + Vector3.forward + Vector3.up * Time.deltaTime * 2;
                 transform.Rotate(transform.rotation.x + 5, transform.rotation.y, transform.rotation.z, Space.Self);
             }
         }
