@@ -17,6 +17,8 @@ public class menuController : MonoBehaviour {
     public bool fadein = false;
     public bool movetoSR = false;
     public GameObject sceneChange;
+    public GameObject menu1;
+    public GameObject menu2;
     Quaternion rot1;
     Quaternion rot2;
 
@@ -96,6 +98,7 @@ public class menuController : MonoBehaviour {
     {
         fadein = false;
         fadeout = true;
+        menu1.SetActive(false);
         StartCoroutine(fadeBack());
     }
 
@@ -108,7 +111,8 @@ public class menuController : MonoBehaviour {
     public IEnumerator fadeBack()
     {
         yield return new WaitForSeconds(1);
-        transform.position = new Vector3(-37.21f, 2.99f, 5.18f);
+        menu2.SetActive(true);
+        transform.position = new Vector3(-36.698f, 2.99f, 6.57f);
         transform.rotation = rot1;
         movetoSR = true;
         //moveToShowroom();
