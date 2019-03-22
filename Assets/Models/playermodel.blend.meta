@@ -91,11 +91,6 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Leotard
-    second: {fileID: 2100000, guid: 74d7597a8aa5e624baed17483eba4f34, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Pants
     second: {fileID: 2100000, guid: dc96a48cfd9f49748ba7a4b4615a30b1, type: 2}
   - first:

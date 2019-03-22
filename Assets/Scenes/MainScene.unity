@@ -1053,6 +1053,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1385600808 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1650648750627358, guid: fb92b72b880f44df79bd7533198e0d61,
+    type: 2}
+  m_PrefabInternal: {fileID: 1908522792}
 --- !u!1 &1448985737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,6 +1232,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: skins.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: clothes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4910513541522078, guid: fb92b72b880f44df79bd7533198e0d61, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.016628
@@ -1274,6 +1289,56 @@ Prefab:
       propertyPath: powerupImage
       value: 
       objectReference: {fileID: 1097611036}
+    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: mesh
+      value: 
+      objectReference: {fileID: 1385600808}
+    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: skins.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 062cf8574b97ea54d8d9f5c90a55361c, type: 2}
+    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: skins.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 61f637efea44f5847970c3dd2096f479, type: 2}
+    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: skins.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0bf431ad06137364ab7096b4305bad66, type: 2}
+    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: skins.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: ec95588149bccb74ba24dedd387e3997, type: 2}
+    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: clothes.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74d7597a8aa5e624baed17483eba4f34, type: 2}
+    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: clothes.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c75c982b71f67204b9771eb3ec00750a, type: 2}
+    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: clothes.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: cadf03d7958e4324abfb32066d25deab, type: 2}
+    - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: clothes.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a31ab27000a3a64faefc0ab255a810c, type: 2}
+    - target: {fileID: 137480498662575426, guid: fb92b72b880f44df79bd7533198e0d61,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb92b72b880f44df79bd7533198e0d61, type: 2}
   m_IsPrefabAsset: 0

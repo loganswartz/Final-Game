@@ -36,6 +36,14 @@ public class CharControlNew : MonoBehaviour {
     public List<Vector3> resetPositions;
     public List<Quaternion> resetRotations;
 
+    public GameObject mesh;
+    SkinnedMeshRenderer meshRend;
+    public Material[] skins;
+    public Material[] clothes;
+    public Material[] origMats;
+    int currSkin;
+    int currClothes;
+
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody>();
@@ -53,7 +61,18 @@ public class CharControlNew : MonoBehaviour {
                 hand = child.gameObject;
             }
         }
- 
+
+        meshRend = mesh.GetComponent<SkinnedMeshRenderer>();
+        currSkin = PlayerPrefs.GetInt("Current Skin");
+        currClothes = PlayerPrefs.GetInt("Current Clothes");
+
+        origMats = meshRend.materials;
+        Debug.Log(currClothes);
+        origMats[0] = clothes[currClothes];
+        origMats[1] = skins[currSkin];
+        origMats[2] = skins[currSkin];
+        meshRend.materials = origMats;
+
     }
 
     // Update is called once per frame

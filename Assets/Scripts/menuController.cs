@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class menuController : MonoBehaviour {
@@ -117,5 +118,12 @@ public class menuController : MonoBehaviour {
         movetoSR = true;
         //moveToShowroom();
         fadeIn();
+    }
+
+    public void initGame()
+    {
+        PlayerPrefs.SetInt("Current Skin", currSkin);
+        PlayerPrefs.SetInt("Current Clothes", currClothes);
+        SceneManager.LoadScene("Scenes/MainScene");
     }
 }

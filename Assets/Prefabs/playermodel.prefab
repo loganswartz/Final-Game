@@ -1061,6 +1061,13 @@ MonoBehaviour:
   children: []
   resetPositions: []
   resetRotations: []
+  mesh: {fileID: 0}
+  meshRend: {fileID: 0}
+  skins: []
+  clothes: []
+  origMats: []
+  currSkin: 0
+  currClothes: 0
 --- !u!135 &135570104854665866
 SphereCollider:
   m_ObjectHideFlags: 1
