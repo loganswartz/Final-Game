@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
     public List<GameObject> players;
+
+    public GameObject HUD;
+    public GameObject Menu;
 
 	// Use this for initialization
 	void Start () {
@@ -44,7 +49,14 @@ public class GameManager : MonoBehaviour {
             players[old_leader_pos] = new_leader;
             players[old_leader_pos + 1] = old_leader;
         }
-	}
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            HUD.SetActive(false);
+            Menu.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
 
     public GameObject getInFront(GameObject player)
     {
@@ -56,5 +68,15 @@ public class GameManager : MonoBehaviour {
             }
         }
         return null;
+    }
+
+    public void toMenu()
+    {
+        SceneManager.LoadScene("Scenes/MenuScene");
+    }
+
+    public void resume()
+    {
+        Time.timeScale = 1;
     }
 }
