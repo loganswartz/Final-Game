@@ -18,19 +18,23 @@ public class CharControlNew : MonoBehaviour {
 
     private Rigidbody rb;
     private float speed = 0.5f;
+    private float speedLimit =  10 ;
     private string dir;
 
     public GameObject hand;
+    public GameObject hand2;
     public GameObject gameManager;
     public string powerup = "";
     public GameObject runnerInFront;
 
     private GameObject prop;
+    private GameObject prop2;
     public GameObject powerupImage;
     public GameObject drinkPowerup;
     public GameObject eggPowerup;
     public GameObject pigeonPowerup;
     public GameObject cardboardPowerup;
+    public GameObject skiPowerup;
 
     public Transform[] children;
     public List<Vector3> resetPositions;
@@ -59,6 +63,9 @@ public class CharControlNew : MonoBehaviour {
             if (child.gameObject.name == "LHand")
             {
                 hand = child.gameObject;
+            } else if (child.gameObject.name == "LHand_001")
+            {
+                hand2 = child.gameObject;
             }
         }
 
@@ -81,8 +88,12 @@ public class CharControlNew : MonoBehaviour {
         // Determine which direction to run in relative to camera, and speed
         if (Input.GetKey(KeyCode.W)) {
             anim.SetBool("run", true);
-            if (speed <= 10) {
+            if (speed <= speedLimit) {
                 speed *= 1.05f;
+            }
+            else
+            {
+                speed /= 1.05f;
             }
             if (Input.GetKey (KeyCode.A)) {
                 dir = "NE";
@@ -94,9 +105,13 @@ public class CharControlNew : MonoBehaviour {
 
         } else if (Input.GetKey (KeyCode.S)) {
             anim.SetBool("run", true);
-            if (speed <= 10)
+            if (speed <= speedLimit)
             {
                 speed *= 1.05f;
+            }
+            else
+            {
+                speed /= 1.05f;
             }
             if (Input.GetKey (KeyCode.A)) {
                 dir = "SE";
@@ -106,15 +121,23 @@ public class CharControlNew : MonoBehaviour {
                 dir = "S";
             }
         } else if (Input.GetKey (KeyCode.A)) {
-            if (speed <= 10)
+            if (speed <= speedLimit)
             {
                 speed *= 1.05f;
             }
+            else
+            {
+                speed /= 1.05f;
+            }
             dir = "E";
 		} else if (Input.GetKey (KeyCode.D)) {
-            if (speed <= 10)
+            if (speed <= speedLimit)
             {
                 speed *= 1.05f;
+            }
+            else
+            {
+                speed /= 1.05f;
             }
             dir = "W";
 			anim.SetBool ("run", true);
@@ -233,6 +256,18 @@ public class CharControlNew : MonoBehaviour {
                 prop.GetComponent<powerupCardboard>().target = hand;
                 StartCoroutine(spawnPowerup(cardboardPowerup));
             }
+            else if (powerup == "ski")
+            {
+                anim.SetBool("ski", true);
+
+                prop = Instantiate(skiPowerup, hand.transform.position, transform.rotation);
+                prop.GetComponent<PowerupSki>().target = hand;
+                prop2 = Instantiate(skiPowerup, hand2.transform.position, transform.rotation);
+                prop2.GetComponent<PowerupSki>().target = hand2;
+                speedLimit = 20;
+                StartCoroutine(disableSki());
+
+            }
             powerup = "";
         }
 
@@ -333,5 +368,14 @@ public class CharControlNew : MonoBehaviour {
     {
         yield return new WaitForSeconds(0.5f);
         anim.SetBool(animBool, false);
+    }
+
+    public IEnumerator disableSki()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(prop);
+        Destroy(prop2);
+        anim.SetBool("ski", false);
+        speedLimit = 10;
     }
 }
