@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharControlNew : MonoBehaviour {
+public class CharControlNew_beforeEdit : MonoBehaviour {
 
 	public Animator anim;
 	public Camera cam;
@@ -11,9 +11,6 @@ public class CharControlNew : MonoBehaviour {
     private Vector3 MoveDirection;
     private Vector3 LookDir;
     private Quaternion LookAt;
-    public bool moveCam = true;
-    public float holdTime;
-    public float startTime;
 
     public bool ragdoll = false;
     public Rigidbody[] bodies;
@@ -85,13 +82,11 @@ public class CharControlNew : MonoBehaviour {
 
     }
 
-
     // Update is called once per frame
     void FixedUpdate () {
 
         // Determine which direction to run in relative to camera, and speed
         if (Input.GetKey(KeyCode.W)) {
-            moveCam = true;
             anim.SetBool("run", true);
             if (speed <= speedLimit) {
                 speed *= 1.05f;
@@ -100,45 +95,58 @@ public class CharControlNew : MonoBehaviour {
             {
                 speed /= 1.05f;
             }
+            if (Input.GetKey (KeyCode.A)) {
+                dir = "NE";
+            } else if (Input.GetKey (KeyCode.D)) {
+                dir = "NW";
+            } else {
+                dir = "N";
+            }
 
         } else if (Input.GetKey (KeyCode.S)) {
             anim.SetBool("run", true);
-            if (speed >= 0.75f)
+            if (speed <= speedLimit)
             {
-                speed /= 1.5f;
+                speed *= 1.05f;
             }
-        }
-        else
-        {
+            else
+            {
+                speed /= 1.05f;
+            }
+            if (Input.GetKey (KeyCode.A)) {
+                dir = "SE";
+			} else if (Input.GetKey (KeyCode.D)) {
+                dir = "SW";
+			} else {
+                dir = "S";
+            }
+        } else if (Input.GetKey (KeyCode.A)) {
+            if (speed <= speedLimit)
+            {
+                speed *= 1.05f;
+            }
+            else
+            {
+                speed /= 1.05f;
+            }
+            dir = "E";
+		} else if (Input.GetKey (KeyCode.D)) {
+            if (speed <= speedLimit)
+            {
+                speed *= 1.05f;
+            }
+            else
+            {
+                speed /= 1.05f;
+            }
+            dir = "W";
+			anim.SetBool ("run", true);
+		} else {
             if (speed >= 0.75f)
             {
                 speed /= 1.05f;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
-        {
-            startTime = Time.time;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            moveCam = false;
-            transform.Rotate(0.0f, -1f, 0.0f);
-            holdTime = Time.time;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            moveCam = false;
-            transform.Rotate(0.0f, 1f, 0.0f);
-            holdTime = Time.time;
-        }
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
-        {
-            holdTime = 0;
-            startTime = 0;
-        }
-
-
 
         // If speed is at a certain level, move forward; otherwise stay still 
         if (speed > 0.75f)
@@ -155,6 +163,39 @@ public class CharControlNew : MonoBehaviour {
         }
 
 
+        // Determine which way to rotate the character
+        if (!ragdoll)
+        {
+            switch (dir)
+            {
+                case "N":
+                    LookDir = cam.transform.forward * speed * Time.deltaTime;
+                    break;
+                case "NE":
+                    LookDir = (cam.transform.forward - cam.transform.right) * speed * Time.deltaTime;
+                    break;
+                case "NW":
+                    LookDir = (cam.transform.forward + cam.transform.right) * speed * Time.deltaTime;
+                    break;
+                case "S":
+                    LookDir = -cam.transform.forward * speed * Time.deltaTime;
+                    break;
+                case "SE":
+                    LookDir = (-cam.transform.forward - cam.transform.right) * speed * Time.deltaTime;
+                    break;
+                case "SW":
+                    LookDir = (-cam.transform.forward + cam.transform.right) * speed * Time.deltaTime;
+                    break;
+                case "E":
+                    LookDir = -cam.transform.right * speed * Time.deltaTime;
+                    break;
+                case "W":
+                    LookDir = cam.transform.right * speed * Time.deltaTime;
+                    break;
+            }
+        }
+
+
         // Gravity exists
         if (!cc.isGrounded) {
 			cc.Move (-transform.up * 10 * Time.deltaTime);
@@ -162,9 +203,9 @@ public class CharControlNew : MonoBehaviour {
 
 		cc.Move (MoveDirection);
 
-		//if (LookDir != Vector3.zero) {
-		//	LookAt = Quaternion.LookRotation (LookDir);
-		//}
+		if (LookDir != Vector3.zero) {
+			LookAt = Quaternion.LookRotation (LookDir);
+		}
 
         // If a powerup is held, throw it when pressing space
         if (powerup != "" && Input.GetKey("space"))
@@ -230,8 +271,8 @@ public class CharControlNew : MonoBehaviour {
             powerup = "";
         }
 
-        //Quaternion LookRotationLimit = Quaternion.Euler (transform.rotation.eulerAngles.x, LookAt.eulerAngles.y, transform.rotation.eulerAngles.z);
-		//transform.rotation = Quaternion.Slerp (transform.rotation, LookRotationLimit, 0.025f);
+        Quaternion LookRotationLimit = Quaternion.Euler (transform.rotation.eulerAngles.x, LookAt.eulerAngles.y, transform.rotation.eulerAngles.z);
+		transform.rotation = Quaternion.Slerp (transform.rotation, LookRotationLimit, 0.025f);
 		
 	}
 
