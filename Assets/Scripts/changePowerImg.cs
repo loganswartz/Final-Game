@@ -9,6 +9,7 @@ public class changePowerImg : MonoBehaviour {
     public Sprite egg;
     public Sprite pigeon;
     public Sprite cardboard;
+    public Sprite skis;
 
 
     // Use this for initialization
@@ -34,6 +35,8 @@ public class changePowerImg : MonoBehaviour {
             case 3: GetComponent<Image>().sprite = pigeon;
                 break;
             case 4: GetComponent<Image>().sprite = cardboard;
+                break;
+            case 5: GetComponent<Image>().sprite = skis;
                 break;
         }
     }

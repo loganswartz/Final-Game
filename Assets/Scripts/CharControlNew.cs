@@ -20,7 +20,7 @@ public class CharControlNew : MonoBehaviour {
     private bool canRagdoll = true;
 
     private Rigidbody rb;
-    private float speed = 0.5f;
+    public float speed = 0.5f;
     private float speedLimit =  10 ;
     private string dir;
 
@@ -105,14 +105,14 @@ public class CharControlNew : MonoBehaviour {
             anim.SetBool("run", true);
             if (speed >= 0.75f)
             {
-                speed /= 1.5f;
+                speed /= 1.05f;
             }
         }
         else
         {
             if (speed >= 0.75f)
             {
-                speed /= 1.05f;
+                speed /= 1.005f;
             }
         }
 
@@ -123,13 +123,13 @@ public class CharControlNew : MonoBehaviour {
         if (Input.GetKey(KeyCode.A))
         {
             moveCam = false;
-            transform.Rotate(0.0f, -1f, 0.0f);
+            transform.Rotate(0.0f, (-6 + (speed / 2)), 0.0f);
             holdTime = Time.time;
         }
         if (Input.GetKey(KeyCode.D))
         {
             moveCam = false;
-            transform.Rotate(0.0f, 1f, 0.0f);
+            transform.Rotate(0.0f, ( 6 - (speed / 2)), 0.0f);
             holdTime = Time.time;
         }
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))

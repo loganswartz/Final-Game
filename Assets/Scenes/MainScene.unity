@@ -1058,6 +1058,7 @@ MonoBehaviour:
   egg: {fileID: 21300000, guid: 089f5b78ee4c1ad42a13a92eaf89766b, type: 3}
   pigeon: {fileID: 21300000, guid: a12e728dfcc6ac4428ac186239506f47, type: 3}
   cardboard: {fileID: 21300000, guid: df89834526f2248939f1146488afe168, type: 3}
+  skis: {fileID: 21300000, guid: e4b4742a78fcf4f99baaf93ccfb5710d, type: 3}
 --- !u!114 &1097611039
 MonoBehaviour:
   m_ObjectHideFlags: 0

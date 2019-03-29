@@ -28,7 +28,7 @@ public class CamControl : MonoBehaviour {
         //transform.rotation = Quaternion.Euler(rotx, roty, 0.0f);
         //transform.rotation = new Quaternion(transform.rotation.x, player.rotation.y, 0.0f, transform.rotation.w);
 
-        if (player.GetComponent<CharControlNew>().moveCam || Mathf.Abs(holdTime) > 1)
+        if (player.GetComponent<CharControlNew>().moveCam || Mathf.Abs(holdTime) > 1 || player.GetComponent<CharControlNew>().speed < 0.75f)
         {
             Debug.Log("turning");
             Vector3 eulerRot = new Vector3(rotx, player.transform.eulerAngles.y, 0.0f);
