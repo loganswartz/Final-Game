@@ -89,6 +89,11 @@ public class CharControlNew : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate () {
 
+        if (anim.GetBool("ski"))
+        {
+            speed = 18;
+        }
+
         // Determine which direction to run in relative to camera, and speed
         if (Input.GetKey(KeyCode.W)) {
             moveCam = true;
@@ -123,14 +128,20 @@ public class CharControlNew : MonoBehaviour {
         if (Input.GetKey(KeyCode.A))
         {
             moveCam = false;
-            transform.Rotate(0.0f, (-6 + (speed / 2)), 0.0f);
-            holdTime = Time.time;
+            if (speed > 0.75 && !ragdoll)
+            {
+                transform.Rotate(0.0f, (-6 + (speed / 2)), 0.0f);
+                holdTime = Time.time;
+            }
         }
         if (Input.GetKey(KeyCode.D))
         {
             moveCam = false;
-            transform.Rotate(0.0f, ( 6 - (speed / 2)), 0.0f);
-            holdTime = Time.time;
+            if (speed > 0.75 && !ragdoll)
+            {
+                transform.Rotate(0.0f, (6 - (speed / 2)), 0.0f);
+                holdTime = Time.time;
+            }
         }
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
         {
@@ -223,7 +234,6 @@ public class CharControlNew : MonoBehaviour {
                 prop.GetComponent<PowerupSki>().target = hand;
                 prop2 = Instantiate(skiPowerup, hand2.transform.position, transform.rotation);
                 prop2.GetComponent<PowerupSki>().target = hand2;
-                speedLimit = 20;
                 StartCoroutine(disableSki());
 
             }
