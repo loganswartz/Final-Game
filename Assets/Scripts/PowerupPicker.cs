@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PowerupPicker : MonoBehaviour {
 
+    // This script picks a random powerup when a player collects a powerup
+    // Script belongs on actual pickups
+
     private bool activated = false;
     private Vector3 startingScale;
     private string[] powerUps = { "drink", "egg", "pigeon", "cardboard", "ski" };//, "cone", };
@@ -14,11 +17,14 @@ public class PowerupPicker : MonoBehaviour {
 	void Start () {
         startingScale = transform.localScale;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
+        // Constant rotation animation
         transform.Rotate(0, 1, 0);
 
+        // If the powerup has been collected, but is still visible, play shrinking
+        // animation and disable the powerup. Then start a coroutine to reset.
         if (activated)
         {
             if (transform.localScale.y > 0)
@@ -28,9 +34,10 @@ public class PowerupPicker : MonoBehaviour {
                 StartCoroutine(reset());
             }
         }
-
     }
 
+    // When player collects, activate the powerup and assign a random powerup to
+    // the player and the HUD
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -45,6 +52,7 @@ public class PowerupPicker : MonoBehaviour {
         }
     }
 
+    // Coroutine to disable PU after playing collection animation
     public IEnumerator kill()
     {
         yield return new WaitForSeconds(0.1f);
@@ -52,6 +60,7 @@ public class PowerupPicker : MonoBehaviour {
         GetComponent<BoxCollider>().enabled = false;
     }
 
+    // Coroutine to reset PU after being collected
     public IEnumerator reset()
     {
         yield return new WaitForSeconds(5);

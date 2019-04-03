@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class changePowerImg : MonoBehaviour {
 
+    // This script resides on the UI and simply allows other entities to change
+    // the powerup displayed on the HUD
+
     public Sprite drink;
     public Sprite egg;
     public Sprite pigeon;

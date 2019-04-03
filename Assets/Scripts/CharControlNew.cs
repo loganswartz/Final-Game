@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharControlNew : MonoBehaviour {
 
+    // This is the main script that allows for player control
+
 	public Animator anim;
 	public Camera cam;
 	public CharacterController cc;
@@ -57,7 +59,8 @@ public class CharControlNew : MonoBehaviour {
 		cc = GetComponent<CharacterController> ();
 		anim = GetComponent<Animator>();
         resetPositions = new List<Vector3>();
-        
+
+        // Find and save the player's hands
         bodies = GetComponentsInChildren<Rigidbody>();
         foreach (Transform child in GetComponentsInChildren<Transform>())
         {
@@ -72,6 +75,7 @@ public class CharControlNew : MonoBehaviour {
             }
         }
 
+        // Set player skin + clothing to selected colors
         meshRend = mesh.GetComponent<SkinnedMeshRenderer>();
         currSkin = PlayerPrefs.GetInt("Current Skin");
         currClothes = PlayerPrefs.GetInt("Current Clothes");
@@ -89,12 +93,16 @@ public class CharControlNew : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate () {
 
+        // If ski powerup active, set speed to 18
         if (anim.GetBool("ski"))
         {
             speed = 18;
         }
 
-        // Determine which direction to run in relative to camera, and speed
+        // If W held, move forward
+        // Animation speed tied to move speed
+        // Acceleration and deceleration is exponential, to give the feeling
+        // of inertial and momentum.
         if (Input.GetKey(KeyCode.W)) {
             moveCam = true;
             anim.SetBool("run", true);
@@ -106,6 +114,8 @@ public class CharControlNew : MonoBehaviour {
                 speed /= 1.05f;
             }
 
+        // If S held, slow down (as if applying brakes). This will slow at a
+        // faster pace than simply letting go
         } else if (Input.GetKey (KeyCode.S)) {
             anim.SetBool("run", true);
             if (speed >= 0.75f)
@@ -121,6 +131,10 @@ public class CharControlNew : MonoBehaviour {
             }
         }
 
+        // If A or D held down, we'll turn the character. We also rotate the
+        // camera to always be behind the player, but not immediately -- that
+        // would be disorienting. So we wait for the character to turn a certain
+        // amount before we start rotating the camera as well
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
         {
             startTime = Time.time;
@@ -171,21 +185,32 @@ public class CharControlNew : MonoBehaviour {
 			cc.Move (-transform.up * 10 * Time.deltaTime);
 		}
 
-		cc.Move (MoveDirection);
+        cc.Move(MoveDirection);
 
-		//if (LookDir != Vector3.zero) {
-		//	LookAt = Quaternion.LookRotation (LookDir);
-		//}
 
         // If a powerup is held, throw it when pressing space
         if (powerup != "" && Input.GetKey("space"))
         {
+            // Set the image on the HUD to the correct powerup
             powerupImage.GetComponent<changePowerImg>().switchImg(0);
+
+            // When we activate a powerup, there is an initial powerup "prop"
+            // created, that's parented to the player's hand, during the throw
+            // animation. After the animation completes, the actual powerup is
+            // created and goes to do its powerup things. For example:
             if (powerup == "drink")
             {
+                // Start throw animation
                 anim.SetBool("throw", true);
+                // Start coroutine that will disable throw animation once it finishes
                 StartCoroutine(disableThrow("throw"));
 
+                // Create the powerup prop (uses the same prefab as the actual), 
+                // remove its collision, let it know that it's a prop (so that it
+                // doesn't execute its script), and let it follow the hand.
+                // Finally, find the player in front of us and start the coroutine
+                // that will create the actual powerup.
+                // This is the process that all powerups use.
                 prop = Instantiate(drinkPowerup, hand.transform.position, transform.rotation);
                 prop.GetComponent<CapsuleCollider>().enabled = false;
                 prop.GetComponent<PowerupDrink>().prop = true;
@@ -237,11 +262,9 @@ public class CharControlNew : MonoBehaviour {
                 StartCoroutine(disableSki());
 
             }
+            // After throwing, set powerup to none.
             powerup = "";
         }
-
-        //Quaternion LookRotationLimit = Quaternion.Euler (transform.rotation.eulerAngles.x, LookAt.eulerAngles.y, transform.rotation.eulerAngles.z);
-		//transform.rotation = Quaternion.Slerp (transform.rotation, LookRotationLimit, 0.025f);
 		
 	}
 
@@ -293,6 +316,8 @@ public class CharControlNew : MonoBehaviour {
         }
     }
 
+    // Enable a ragdoll .5s after collision, to ensure that momentum isn't
+    // immediately lost
     public IEnumerator ragdollEnable()
     {
         yield return new WaitForSeconds(.5f);
@@ -300,6 +325,7 @@ public class CharControlNew : MonoBehaviour {
     
     }
 
+    // Disable ragdoll after 5s
     public IEnumerator ragdollDisable()
     {
         yield return new WaitForSeconds(5);
@@ -307,6 +333,9 @@ public class CharControlNew : MonoBehaviour {
         toggleRagdoll();
     }
 
+    // This is the coroutine that spawns the real powerup. Generally, it creates
+    // the powerup, destroys the prop, and sets the powerup's target to the runner
+    // in front. (Of course, this may change based on behavior of powerup).
     public IEnumerator spawnPowerup(GameObject powerup)
     {
         yield return new WaitForSeconds(0.5f);
@@ -333,12 +362,14 @@ public class CharControlNew : MonoBehaviour {
         }
     }
 
+    // Coroutine to disable throwing animation
     public IEnumerator disableThrow(string animBool)
     {
         yield return new WaitForSeconds(0.5f);
         anim.SetBool(animBool, false);
     }
 
+    // Coroutine to disable ski powerup
     public IEnumerator disableSki()
     {
         yield return new WaitForSeconds(5);

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class powerupCardboard : MonoBehaviour {
 
+    // Script controlling cardboard powerup
+
     public GameObject target;
     public bool prop = false;
     public bool move = true;
@@ -16,6 +18,7 @@ public class powerupCardboard : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+        // If prop, follow hand. Otherwise, fly forward and land on ground
         if (target != null && target.name != "Hand")
         {
             Transform[] children = target.GetComponentsInChildren<Transform>();

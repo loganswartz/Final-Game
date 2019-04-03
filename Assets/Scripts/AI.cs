@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AI : MonoBehaviour {
 
+    // This is not a real AI script, and was only used for testing. Thus,
+    // it has not been commented.
+
     public bool ragdoll = false;
     public Rigidbody[] bodies;
     public Transform[] children;
