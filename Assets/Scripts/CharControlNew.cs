@@ -53,8 +53,12 @@ public class CharControlNew : MonoBehaviour {
     int currSkin;
     int currClothes;
 
+    public AudioSource fall;
+    public AudioSource running;
+
     // Use this for initialization
     void Start () {
+        running.volume = 0;
         rb = GetComponent<Rigidbody>();
 		cc = GetComponent<CharacterController> ();
 		anim = GetComponent<Animator>();
@@ -104,6 +108,10 @@ public class CharControlNew : MonoBehaviour {
         // Acceleration and deceleration is exponential, to give the feeling
         // of inertial and momentum.
         if (Input.GetKey(KeyCode.W)) {
+            if (running.volume < 1)
+            {
+                running.volume += 0.1f;
+            }
             moveCam = true;
             anim.SetBool("run", true);
             if (speed <= speedLimit) {
@@ -117,6 +125,7 @@ public class CharControlNew : MonoBehaviour {
         // If S held, slow down (as if applying brakes). This will slow at a
         // faster pace than simply letting go
         } else if (Input.GetKey (KeyCode.S)) {
+
             anim.SetBool("run", true);
             if (speed >= 0.75f)
             {
@@ -125,6 +134,10 @@ public class CharControlNew : MonoBehaviour {
         }
         else
         {
+            if (running.volume > 0)
+            {
+                running.volume -= 0.01f;
+            }
             if (speed >= 0.75f)
             {
                 speed /= 1.005f;
@@ -275,6 +288,7 @@ public class CharControlNew : MonoBehaviour {
         if (!ragdoll)
         {
             ragdoll = true;
+            fall.Play();
             for (var i = 0; i < bodies.Length; i++)
             {
                 bodies[i].isKinematic = false;

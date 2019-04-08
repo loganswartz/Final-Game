@@ -16,14 +16,21 @@ public class GameManager : MonoBehaviour {
     // distance, however, as the check is relative to the first player, and
     // we don't want it to get messed up if the track is a circle, for example
 
+    // This script also controls universal sounds such as music.
+
     public List<GameObject> players;
 
     public GameObject HUD;
     public GameObject Menu;
+    public AudioSource[] songs;
+    private AudioSource currSource;
+    private System.Random random = new System.Random();
 
 	// Use this for initialization
 	void Start () {
         players = new List<GameObject>();
+        currSource = songs[random.Next(0, songs.Length)];
+        currSource.Play();
 
         // Find all players and add to queue in order of initial position
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("AI"))
@@ -35,6 +42,14 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (!currSource.isPlaying)
+        {
+            Debug.Log("currsource not playing");
+            currSource = songs[random.Next(0, songs.Length)];
+            currSource.Play();
+        }
+
         bool pos_changed = false;
         GameObject old_leader = null;
         GameObject new_leader = null;

@@ -11,6 +11,7 @@ public class PowerupDrink : MonoBehaviour {
     private Rigidbody rb;
     private bool following = true;
     public bool prop = false;
+    public AudioSource can;
 
 	// Use this for initialization
 	void Start () {
@@ -56,8 +57,9 @@ public class PowerupDrink : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.tag == "AI")
+        if (collision.tag == "AI" || collision.tag == "Player")
         {
+            can.Play();
             following = false;
             rb.isKinematic = false;
             rb.AddExplosionForce(300, transform.position-Vector3.left, 5, 3);
