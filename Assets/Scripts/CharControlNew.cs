@@ -55,6 +55,7 @@ public class CharControlNew : MonoBehaviour {
 
     public AudioSource fall;
     public AudioSource running;
+    public AudioSource skiing;
 
     // Use this for initialization
     void Start () {
@@ -268,6 +269,7 @@ public class CharControlNew : MonoBehaviour {
             {
                 anim.SetBool("ski", true);
 
+                skiing.volume = 1;
                 prop = Instantiate(skiPowerup, hand.transform.position, transform.rotation);
                 prop.GetComponent<PowerupSki>().target = hand;
                 prop2 = Instantiate(skiPowerup, hand2.transform.position, transform.rotation);
@@ -390,6 +392,7 @@ public class CharControlNew : MonoBehaviour {
         Destroy(prop);
         Destroy(prop2);
         anim.SetBool("ski", false);
+        skiing.volume = 0;
         speedLimit = 10;
     }
 }

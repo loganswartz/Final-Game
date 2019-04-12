@@ -12,10 +12,12 @@ public class PowerupPicker : MonoBehaviour {
     private string[] powerUps = { "drink", "egg", "pigeon", "cardboard", "ski" };//, "cone", };
 
     public GameObject powerupImg;
+    public AudioSource puOpen;
 
 	// Use this for initialization
 	void Start () {
         startingScale = transform.localScale;
+        puOpen = GetComponent<AudioSource>();
 	}
 
 	// Update is called once per frame
@@ -43,6 +45,7 @@ public class PowerupPicker : MonoBehaviour {
         if (other.tag == "Player")
         {
             activated = true;
+            puOpen.Play();
             if (other.gameObject.GetComponent<CharControlNew>().powerup == "")
             {
                 int powerup = Random.Range(0, powerUps.Length);

@@ -15,6 +15,7 @@ public class menuController : MonoBehaviour {
     public Material[] origMats;
     public GameObject dummy;
     public Renderer dummyRend;
+    public Image track;
 
     public bool fadeout = false;
     public bool fadein = false;
@@ -120,6 +121,7 @@ public class menuController : MonoBehaviour {
     public IEnumerator fadeBack()
     {
         yield return new WaitForSeconds(1);
+        track.gameObject.SetActive(false);
         menu2.SetActive(true);
         transform.position = new Vector3(-36.698f, 2.99f, 6.57f);
         transform.rotation = rot1;
