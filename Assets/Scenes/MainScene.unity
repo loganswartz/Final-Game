@@ -848,6 +848,16 @@ Prefab:
       propertyPath: m_TagString
       value: RagdollCollider
       objectReference: {fileID: 0}
+    - target: {fileID: 23771761133516318, guid: 72eb8569389184256965e59eeff83bb1,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23993476814220852, guid: 72eb8569389184256965e59eeff83bb1,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72eb8569389184256965e59eeff83bb1, type: 2}
   m_IsPrefabAsset: 0
