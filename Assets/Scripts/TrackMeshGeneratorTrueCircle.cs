@@ -35,6 +35,7 @@ public class TrackMeshGeneratorTrueCircle : MonoBehaviour
         left_walls_object.GetComponent<MeshFilter>().mesh = left_walls_mesh;
         right_walls_object.GetComponent<MeshFilter>().mesh = right_walls_mesh;
 
+
         // define track attributes here
         float track_width = 20f;
         int NumOfCurveSegments = 20;
@@ -106,6 +107,11 @@ public class TrackMeshGeneratorTrueCircle : MonoBehaviour
         CreateMesh(track_mesh, track_vertices, track_triangles);
         CreateMesh(left_walls_mesh, left_walls_vertices, left_walls_triangles);
         CreateMesh(right_walls_mesh, right_walls_vertices, right_walls_triangles);
+
+	// add the collider to the track
+	track_object.GetComponent<MeshCollider>().sharedMesh = track_mesh;
+	left_walls_object.GetComponent<MeshCollider>().sharedMesh = left_walls_mesh;
+	right_walls_object.GetComponent<MeshCollider>().sharedMesh = right_walls_mesh;
     }
 
     void CreateMesh(Mesh input_mesh, Vector3[] input_vertices, int[] input_triangles)
@@ -113,6 +119,7 @@ public class TrackMeshGeneratorTrueCircle : MonoBehaviour
         input_mesh.vertices = input_vertices;
         input_mesh.triangles = input_triangles;
         input_mesh.uv = GenerateUVs(input_mesh, input_vertices);
+
         input_mesh.RecalculateNormals();
     }
 
