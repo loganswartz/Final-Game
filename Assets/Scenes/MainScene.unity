@@ -2823,7 +2823,7 @@ Prefab:
     - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
         type: 2}
       propertyPath: powerup
-      value: ski
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 114916881593070608, guid: fb92b72b880f44df79bd7533198e0d61,
         type: 2}
