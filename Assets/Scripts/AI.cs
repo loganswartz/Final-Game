@@ -15,22 +15,13 @@ public class AI : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        resetPositions = new List<Vector3>();
-        bodies = GetComponentsInChildren<Rigidbody>();
-        foreach (Transform child in GetComponentsInChildren<Transform>())
-        {
-            resetPositions.Add(child.transform.position);
-        }
-        foreach (Transform child in GetComponentsInChildren<Transform>())
-        {
-            resetRotations.Add(child.transform.rotation);
-        }
+        resetChar();
+        InvokeRepeating("resetChar", 5f, 0.5f);
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        transform.position = transform.position + Vector3.forward * Time.deltaTime;
 	}
 
     void toggleRagdoll()
@@ -84,5 +75,22 @@ public class AI : MonoBehaviour {
     {
         yield return new WaitForSeconds(5);
         toggleRagdoll();
+    }
+
+    public void resetChar()
+    {
+        if (!ragdoll)
+        {
+            resetPositions = new List<Vector3>();
+            bodies = GetComponentsInChildren<Rigidbody>();
+            foreach (Transform child in GetComponentsInChildren<Transform>())
+            {
+                resetPositions.Add(child.transform.position);
+            }
+            foreach (Transform child in GetComponentsInChildren<Transform>())
+            {
+                resetRotations.Add(child.transform.rotation);
+            }
+        }
     }
 }

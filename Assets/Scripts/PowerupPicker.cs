@@ -14,6 +14,8 @@ public class PowerupPicker : MonoBehaviour {
     public GameObject powerupImg;
     public AudioSource puOpen;
 
+    public GameObject manager;
+
 	// Use this for initialization
 	void Start () {
         startingScale = transform.localScale;
@@ -48,7 +50,15 @@ public class PowerupPicker : MonoBehaviour {
             puOpen.Play();
             if (other.gameObject.GetComponent<CharControlNew>().powerup == "")
             {
-                int powerup = Random.Range(0, powerUps.Length);
+                int powerup;
+                if (manager.GetComponent<GameManager>().players[0].name == "playermodel")
+                {
+                    powerup = 3;
+                }
+                else
+                {
+                    powerup = Random.Range(0, powerUps.Length);
+                }
                 other.gameObject.GetComponent<CharControlNew>().powerup = powerUps[powerup];
                 powerupImg.GetComponent<changePowerImg>().switchImg(powerup + 1);
             }

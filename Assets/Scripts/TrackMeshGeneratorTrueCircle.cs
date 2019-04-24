@@ -11,6 +11,7 @@ public class TrackMeshGeneratorTrueCircle : MonoBehaviour
     Mesh track_mesh;
     Mesh left_walls_mesh;
     Mesh right_walls_mesh;
+    public GameObject powerUp;
 
     Vector3[] track_vertices;
     int[] track_triangles;
@@ -229,6 +230,7 @@ public class TrackMeshGeneratorTrueCircle : MonoBehaviour
         // create all the points
         for (int i = 0; i <= segments; i++)
         {
+
             if (right_turn == true) {
                 angle -= segment_angle;
             } else {
@@ -247,6 +249,7 @@ public class TrackMeshGeneratorTrueCircle : MonoBehaviour
             outer_point = new Vector3(outer_x, 0, outer_z) + internal_offset + offset.position_offset;
             building_outer_point = new Vector3(outer_x, building_height, outer_z) + internal_offset + offset.position_offset;
             building_inner_point = new Vector3(inner_x, building_height, inner_z) + internal_offset + offset.position_offset;
+
 
             // if it's a right turn, the right side is the inside of the curve and left on the outside
             if (right_turn == true) {
@@ -336,6 +339,7 @@ public class TrackMeshGeneratorTrueCircle : MonoBehaviour
             track_vertices[i+offset.vertices_index] = vertices_int[i];
             left_walls_vertices[i+offset.vertices_index] = left_building_vertices_int[i];
             right_walls_vertices[i+offset.vertices_index] = right_building_vertices_int[i];
+
         }
         for (int i = 0; i < triangles_int.Length; i++)
         {
@@ -366,7 +370,8 @@ public class TrackMeshGeneratorTrueCircle : MonoBehaviour
 			if (i % 2 == 0) {
 				if (i == 2 || i == 6) {
 					track.Add(new TrackUtils.TrackPart("straight", 50f));
-				} else {
+                }
+                else {
 					track.Add(new TrackUtils.TrackPart("straight", 100f));
 				}
 			} else {

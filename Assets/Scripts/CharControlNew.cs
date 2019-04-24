@@ -57,6 +57,8 @@ public class CharControlNew : MonoBehaviour {
     public AudioSource running;
     public AudioSource skiing;
 
+    public bool startb = false;
+
     // Use this for initialization
     void Start () {
         running.volume = 0;
@@ -64,6 +66,8 @@ public class CharControlNew : MonoBehaviour {
 		cc = GetComponent<CharacterController> ();
 		anim = GetComponent<Animator>();
         resetPositions = new List<Vector3>();
+        InvokeRepeating("resetChar", 5f, 0.5f);
+        StartCoroutine(start());
 
         // Find and save the player's hands
         bodies = GetComponentsInChildren<Rigidbody>();
@@ -91,6 +95,8 @@ public class CharControlNew : MonoBehaviour {
         origMats[1] = skins[currSkin];
         origMats[2] = skins[currSkin];
         meshRend.materials = origMats;
+
+        StartCoroutine(start());
 
     }
 
@@ -156,7 +162,7 @@ public class CharControlNew : MonoBehaviour {
         if (Input.GetKey(KeyCode.A))
         {
             moveCam = false;
-            if (speed > 0.75 && !ragdoll)
+            if (speed > 0.75 && !ragdoll && startb)
             {
                 transform.Rotate(0.0f, (-6 + (speed / 2)), 0.0f);
                 holdTime = Time.time;
@@ -165,7 +171,7 @@ public class CharControlNew : MonoBehaviour {
         if (Input.GetKey(KeyCode.D))
         {
             moveCam = false;
-            if (speed > 0.75 && !ragdoll)
+            if (speed > 0.75 && !ragdoll && startb)
             {
                 transform.Rotate(0.0f, (6 - (speed / 2)), 0.0f);
                 holdTime = Time.time;
@@ -280,6 +286,11 @@ public class CharControlNew : MonoBehaviour {
             // After throwing, set powerup to none.
             powerup = "";
         }
+
+        if (!startb)
+        {
+            speed = 0.5f;
+        }
 		
 	}
 
@@ -317,7 +328,7 @@ public class CharControlNew : MonoBehaviour {
             }
             this.gameObject.GetComponent<CharacterController>().enabled = true;
             this.gameObject.GetComponent<Animator>().enabled = true;
-            canRagdoll = true;
+            StartCoroutine(endInvincible());
         }
     }
 
@@ -341,6 +352,12 @@ public class CharControlNew : MonoBehaviour {
     
     }
 
+    public IEnumerator endInvincible()
+    {
+        yield return new WaitForSeconds(3);
+        canRagdoll = true;
+    }
+
     // Disable ragdoll after 5s
     public IEnumerator ragdollDisable()
     {
@@ -357,7 +374,7 @@ public class CharControlNew : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
         if (powerup.name == "Drink")
         {
-            GameObject pu = Instantiate(powerup, transform.position + (transform.up * 1.75f) + transform.forward, transform.rotation);
+            GameObject pu = Instantiate(powerup, transform.position + (transform.up * 1.75f) + (transform.forward * 1.75f), transform.rotation);
             Destroy(prop);
             pu.GetComponent<PowerupDrink>().target = runnerInFront.transform;
         } else if (powerup.name == "Egg")
@@ -373,7 +390,8 @@ public class CharControlNew : MonoBehaviour {
         }
         else if (powerup.name == "Cardboard")
         {
-            GameObject pu = Instantiate(powerup, transform.position + (transform.up * 1.75f) + transform.forward, transform.rotation);
+            GameObject pu = Instantiate(powerup, transform.position + transform.up, this.transform.rotation);
+            pu.GetComponent<powerupCardboard>().target = this.gameObject;
             Destroy(prop);
         }
     }
@@ -394,5 +412,24 @@ public class CharControlNew : MonoBehaviour {
         anim.SetBool("ski", false);
         skiing.volume = 0;
         speedLimit = 10;
+    }
+
+    public void resetChar()
+    {
+        if (!ragdoll)
+        {
+            resetPositions = new List<Vector3>();
+            foreach (Transform child in GetComponentsInChildren<Transform>())
+            {
+                resetPositions.Add(child.transform.position);
+                resetRotations.Add(child.transform.rotation);
+            }
+        }
+    }
+
+    public IEnumerator start()
+    {
+        yield return new WaitForSeconds(3);
+        startb = true;
     }
 }

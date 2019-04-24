@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour {
     private AudioSource currSource;
     private System.Random random = new System.Random();
 
+    public Text place;
+    public GameObject p2;
+    public GameObject p3;
+
 	// Use this for initialization
 	void Start () {
         players = new List<GameObject>();
@@ -48,6 +52,23 @@ public class GameManager : MonoBehaviour {
             Debug.Log("currsource not playing");
             currSource = songs[random.Next(0, songs.Length)];
             currSource.Play();
+        }
+
+        if (players[0].name == "playermodel")
+        {
+            place.text = "1st";
+            p2.GetComponent<FollowPath>().speed = 13;
+            p3.GetComponent<FollowPath>().speed = 13;
+        } else if (players[1].name == "playermodel")
+        {
+            place.text = "2nd";
+            p2.GetComponent<FollowPath>().speed = 11;
+            p3.GetComponent<FollowPath>().speed = 11;
+        } else
+        {
+            place.text = "3rd";
+            p2.GetComponent<FollowPath>().speed = 11;
+            p3.GetComponent<FollowPath>().speed = 11;
         }
 
         bool pos_changed = false;

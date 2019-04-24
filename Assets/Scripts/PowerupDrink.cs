@@ -39,14 +39,14 @@ public class PowerupDrink : MonoBehaviour {
             }
             if (target != null && following)
             {
-                transform.position = Vector3.MoveTowards(transform.position, finalPosition, Time.deltaTime * 30);
+                transform.position = Vector3.MoveTowards(transform.position, finalPosition, Time.deltaTime * 40);
                 transform.Rotate(3, 3, 3);
             }
             if (transform.position == finalPosition)
             {
                 following = false;
                 rb.isKinematic = false;
-                rb.AddForce(-direction * 100);
+                rb.AddForce(-direction * 250);
             }
         } else
         {

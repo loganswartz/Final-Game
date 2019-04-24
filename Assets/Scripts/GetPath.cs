@@ -8,7 +8,7 @@ public class GetPath : MonoBehaviour{
     void Start ()
     {
         int num = Random.Range (0, Paths.Length);
-        transform.position = Paths [num].transform.position;
+        //transform.position = Paths [num].transform.position;
         FollowPath yourPath = GetComponent<FollowPath> ();
         yourPath.whichPath = Paths [num].name;
     }

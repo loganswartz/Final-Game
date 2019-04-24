@@ -9,6 +9,7 @@ public class powerupCardboard : MonoBehaviour {
     public GameObject target;
     public bool prop = false;
     public bool move = true;
+    public bool audio = true;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +20,7 @@ public class powerupCardboard : MonoBehaviour {
 	void Update () {
 		
         // If prop, follow hand. Otherwise, fly forward and land on ground
-        if (target != null && target.name != "Hand")
+        if (target != null && target.name != "Hand" && prop)
         {
             Transform[] children = target.GetComponentsInChildren<Transform>();
             foreach (var child in children)
@@ -34,9 +35,14 @@ public class powerupCardboard : MonoBehaviour {
 
         if (!prop)
         {
+            if (audio)
+            {
+                GetComponent<AudioSource>().Play();
+                audio = false;
+            }
             if (move)
             {
-                transform.position = transform.position + Vector3.forward + Vector3.up * Time.deltaTime * 2;
+                transform.position = transform.position + target.transform.forward + transform.up * Time.deltaTime * 0.9f;
                 transform.Rotate(transform.rotation.x + 5, transform.rotation.y, transform.rotation.z, Space.Self);
             }
         }

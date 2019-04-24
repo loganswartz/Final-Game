@@ -137,4 +137,10 @@ public class menuController : MonoBehaviour {
         PlayerPrefs.SetInt("Current Clothes", currClothes);
         SceneManager.LoadScene("Scenes/MainScene");
     }
+
+    public void quit()
+    {
+        Application.Quit();
+    }
+
 }

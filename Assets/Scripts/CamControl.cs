@@ -37,7 +37,7 @@ public class CamControl : MonoBehaviour {
 
         // If one of the above mentioned situations is true, begin rotating to
         // match player
-        if (player.GetComponent<CharControlNew>().moveCam || Mathf.Abs(holdTime) > 1 || player.GetComponent<CharControlNew>().speed < 0.75f)
+        if (player.GetComponent<CharControlNew>().moveCam || Mathf.Abs(holdTime) > 0.5f || player.GetComponent<CharControlNew>().speed < 0.75f)
         {
             Vector3 eulerRot = new Vector3(rotx, player.transform.eulerAngles.y, 0.0f);
             Quaternion rot = Quaternion.Euler(eulerRot);
